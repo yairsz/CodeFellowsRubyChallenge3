@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+
+<SCRIPT Language="JavaScript">
+
+function addToDoItem()
+{
+	var textField = document.getElementById('textField');
+	
+	var table = document.getElementById("toDoTable");
+	var index = table.rows.length;
+	var row = table.insertRow(index);
+  
+	var textCell = row.insertCell(0);
+	textCell.innerHTML = textField.value;
+  	
+	var checkboxHTML = '<input type="checkbox" onClick="removeItem(this)"><br/>';
+	var checkCell = row.insertCell(0);
+	checkCell.width = 20;
+	checkCell.align ="center";
+	checkCell.innerHTML = checkboxHTML;
+	
+	textField.value='';
+	textField.focus();
+}
+
+function removeItem(checkbox){
+	var table = document.getElementById("toDoTable");
+	row = checkbox.parentNode.parentNode;
+	table.deleteRow(row.rowIndex);
+}
+
+</SCRIPT>
+
+<TITLE>To Do List</TITLE>
+</HEAD>
+<BODY>
+
+<H2>Enter your to do item, and click TO DO! to add it to the list<br>
+Please try this a few times.</H2>
+
+<P> <INPUT TYPE="TEXT" NAME="todo" id='textField'><BR><BR>
+<INPUT TYPE="Button" Value="TO DO!" onClick="addToDoItem()">
+</P>
+
+<table id = "toDoTable" width="100%" border="1" cellpadding="2" cellspacing="2" style="background-color: #ffffff;">
+      <tr valign="top">
+      <td class = "tdCheckbox" width="20" align="center"><input type="checkbox" onClick="removeItem(this)"><br/></td>
+      <td class = "tdText">Your 'To Do' Items will appear here, check the box to clear them<br/></td>
+      </tr>
+</table>	
+
+
+</BODY>
+</HTML>
